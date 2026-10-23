@@ -3,6 +3,7 @@
 
 import requests
 from bs4 import BeautifulSoup
+import csv
 
 url = "http://abehiroshi.la.coocan.jp/movie/eiga.htm"
 header = {
@@ -29,3 +30,9 @@ for table in html_soup.find_all('table', border="1"):
 for t in titles:
     print(t)
 print(f'合計: {len(titles)}件')
+
+with open('movies.csv', 'w', encoding='utf-8-sig', newline='') as f:
+    writer = csv.writer(f)
+    writer.writerow(['title'])
+    for t in titles:
+        writer.writerow([t])
