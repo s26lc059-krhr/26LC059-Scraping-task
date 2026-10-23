@@ -5,11 +5,14 @@ import requests
 from bs4 import BeautifulSoup
 
 url = "http://abehiroshi.la.coocan.jp/movie/eiga.htm"
-res = requests.get(url)
-
-print(f'レスポンス: {res}')
-print(f'レスポンスの型: {type(res)}')
+header = {
+  'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+}
+res = requests.get(url, headers=header)
+res.encoding = res.apparent_encoding
 
 html_soup = BeautifulSoup(res.content, 'html.parser')
-print(f'html_soupの型: {type(html_soup)}')
 
+print(f'レスポンスボディ: {res.text}')
+with open('abehiroshi.html', 'w', encoding='utf-8') as f:
+  f.write(res.text)
