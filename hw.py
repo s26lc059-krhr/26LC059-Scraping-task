@@ -12,7 +12,7 @@ from bs4 import BeautifulSoup
 URL = "https://www.musashino-u.ac.jp/"
 ALLOWED_NETLOC = urlparse(URL).netloc
 SLEEP_SEC = 1
-MAX_PAGES = 20  # 測試用，確認沒問題後改成 None
+MAX_PAGES = None  # 測試用，確認沒問題後改成 None
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
                   "(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
